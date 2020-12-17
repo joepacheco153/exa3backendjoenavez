@@ -1,25 +1,26 @@
 package pe.edu.upeu.exa3backendjoenavez.serviceImpl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.exa3backendjoenavez.dao.ProductoDao;
-import pe.edu.upeu.exa3backendjoenavez.entity.Producto;
-import pe.edu.upeu.exa3backendjoenavez.service.ProductoService;
+import pe.edu.upeu.exa3backendjoenavez.dao.DetalleVentaDao;
+import pe.edu.upeu.exa3backendjoenavez.entity.Detalle_venta;
+import pe.edu.upeu.exa3backendjoenavez.service.DetalleVentaService;
 @Service
-public class ProductoServiceImpl implements ProductoService {
-@Autowired
-private ProductoDao prodDao;
+public class DetalleVentaServiceImpl implements DetalleVentaService{
+	@Autowired
+	private DetalleVentaDao dvDao;
 	@Override
-	public int create(Producto p) {
+	public int create(Detalle_venta d) {
 		// TODO Auto-generated method stub
-		return prodDao.create(p);
+		return dvDao.create(d);
 	}
 
 	@Override
-	public int update(Producto p) {
+	public int update(Detalle_venta d) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -37,15 +38,15 @@ private ProductoDao prodDao;
 	}
 
 	@Override
-	public Map<String, Object> readAll() {
+	public List<Map<String, Object>> readAll2(int idventa) {
 		// TODO Auto-generated method stub
-		return prodDao.readAll();
+		return dvDao.readAll2(idventa);
 	}
 
 	@Override
-	public Producto read(int id) {
+	public List<Detalle_venta> readAll() {
 		// TODO Auto-generated method stub
-		return prodDao.read(id);
+		return null;
 	}
 
 }

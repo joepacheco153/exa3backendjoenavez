@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,10 @@ public Map<String, Object> readAll(){
 public int create (@RequestBody Producto p) {
 	System.out.println("CREANDO:  "+p.getNomprod()+p.getPrecio()+p.getStock());
 	return prodService.create(p);
+}
+@GetMapping("/read/{id}")
+public Producto read (@PathVariable int id) {
+	return prodService.read(id);
 }
 
 }

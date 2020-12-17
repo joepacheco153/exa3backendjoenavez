@@ -3,6 +3,7 @@ package pe.edu.upeu.exa3backendjoenavez.daoImpl;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -54,6 +55,14 @@ Gson gson = new Gson();
 				.declareParameters(new SqlOutParameter("cursor_productos", OracleTypes.REF_CURSOR, new ColumnMapRowMapper()));
 				Map<String, Object> map = simpleJdbcCall.execute();
 		return map;
+	}
+
+	@Override
+	public Producto read(int id) {
+		// TODO Auto-generated method stub
+		String SQL = "select * from producto where idproducto = ?";
+		return jdbcTemplate.queryForObject(SQL, new Object[] {id}, BeanPropertyRowMapper.newInstance(Producto.class) );
+		
 	}
 
 }

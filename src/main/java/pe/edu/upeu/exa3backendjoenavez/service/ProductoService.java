@@ -9,5 +9,6 @@ public interface ProductoService {
 	int update(Producto p);
 	int update(int id);
 	int delete(int id);
+	Producto read (int id);
 	Map<String, Object> readAll();
 }
